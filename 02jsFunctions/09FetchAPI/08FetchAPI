@@ -1,0 +1,57 @@
+//The Fetch API provides an inteface for fetching (sending/recieving) resources.
+// It uses Request and Response objects.
+
+// The fetch() method is used to fetch a resource(data).
+
+// let promise = fetch(url ,[options])
+
+//async await ko use karne k liye hme ek asynchronous fun chahiye..
+
+
+const URL = "https://api.thecatapi.com/v1/images/search?limit=10"; 
+const imgElement = document.querySelector("#catImage");  // assuming there's an image element with this ID
+const btn = document.querySelector("#btn");
+
+const getCats = async () => {
+    console.log("getting data...");
+    let Response = await fetch(URL);
+    console.log(Response);
+    let data = await Response.json();
+    imgElement.src = data[0].url;  // Display the first cat image
+};
+
+btn.addEventListener("click", getCats);
+
+
+
+// let promise = fetch(url ,[options])
+//fetch method ek particular type ki request bhejta h..GET request..requests only use to get or recieve the data.
+
+
+
+// UNDERSTANDING TERMS
+//....................
+// AJAX is Asynchronous JS and XML    //previous times data XML format m ata tha...request bheja response aaya AJAx
+
+// JSON is JavaScript Object Notations  //jo data ja rha hoga vo js objects k form m hme dikhega..but not in real..ist promise retuns by fetch
+// json() method: returns a second promise that resolves with the result of parsing the response body  text as JSON (input is JSON,output is JS OBject)
+// 1>Response(JSON) comes from API   2> convert it into JS object....usable data
+
+
+
+
+
+
+//REQUESTS AND RESPONSES:-
+
+// HTTP Verbs (// requests like GET , POST , DELETE ....etc)
+
+// Response Status Code ..>// Successful responses (200 – 299)
+// Client error responses (400 – 499)
+// Server error responses (500 – 599)  // api
+
+// HEADERS > headers in api is a additional info. at get post time.
+
+//SENDING POST REQUEST 
+
+//fetch(URL , options)  ..what changes we have to do in options to post a request.
